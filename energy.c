@@ -81,14 +81,6 @@ double cthmin,sthmin;
 /****************************************************************************/
 double cont_df(double s1, double s2,double d);
 double cellcalc(int inc,int nl,short list[]);
-void exp_merge(double e1, double e2, double *e,
-	       double f1, double f2, double *f,
-	       double dd, double d1, double d2,
-	       double e0, double ksi);
-void flat_merge(double e1, double e2, double *e,
-		double f1, double f2, double *f,
-		double dd, double d1, double d2,
-		double eflat);
 void log_sum_merge(double e1, double e2, double *e,
 		 double f1, double f2, double *f,
 		   double bet,double c);
@@ -97,7 +89,6 @@ void eseq_calc(int i,int j,double r2,double *es,double *fs);
 void bond_ecalc(double *e,double *f,double db,double kbond);
 void bend_ecalc(double *e,double *f,double dth,double kbend);
 void tors_ecalc(double *e,double *f,double dph,double k1,double k3);
-void tors_ecalc_peg(double *e,double *f,double dph);
 void cont_rep_ecalc(int iflag,double *e,double *f,double r2,double sig2,double kcont);
 void cont_att_ecalc(int iflag,double kstr,double r,
 		    double *eg,double *eg1,double *eg2,
@@ -126,30 +117,6 @@ void add_f(int i,int j,double fr,double rx,double ry,double rz) {
   }
 }
 /****************************************************************************/
-void exp_merge(double e1, double e2, double *e,
-	       double f1, double f2, double *f,
-	       double dd, double d1, double d2,
-	       double e0, double ksi) {
-  double w1,w2;
-  double g1,g2;
-  double dmin = min(d1, d2),dmax = max(d1, d2);
-  const double bet = 1.0 / eps;
-
-  if (dd < dmin || dd > dmax) {
-    (*e) = (e1 < e2 ? e1 : e2);
-    (*f) = (e1 < e2 ? f1 : f2);
-    return ;
-  }
-
-  g1 = 1 - (w1 = exp(- bet * (e1 - e0)));
-  g2 = 1 - (w2 = exp(- bet * (e2 - e0)));
- 
-  (*e) = ksi * g1 * g2 + e0;
-  (*f) = ksi * bet * ( g2 * w1 * f1 + g1 * w2 * f2 ) ;
-
-  return;
-}
-/****************************************************************************/
 void log_sum_merge(double e1, double e2, double *e,
 		   double f1, double f2, double *f,
 		   double bet, double c) {
@@ -176,27 +143,6 @@ void log_sum_merge(double e1, double e2, double *e,
   (*f) = ( (*f) + fmax * wmin ) / wsum;
 
   return;
-}
-/****************************************************************************/
-void flat_merge(double e1, double e2, double *e,
-		double f1, double f2, double *f,
-		double dd, double d1, double d2,
-		double eflat)  {
-
-  if (e1 < e2) {
-    (*e) = e1;
-    (*f) = f1;
-  } else {
-    (*e) = e2;
-    (*f) = f2;
-  }
-
-  if (dd > d1 && dd < d2) {
-    (*e) = eflat;
-    (*f) = 0;
-  }
-
-  return ;
 }
 /****************************************************************************/
 void crowd_ecalc(double *e, double *f,double r2,double sigma,double rho) {
@@ -418,7 +364,6 @@ double bond(int iflag) {
 	  db2 = b[i] - bn2[i];
 	  bond_ecalc(&e2,&fb2,db2,kbond2[i]);
 	  log_sum_merge(e1=et,e2,&et,fb1=fb,fb2,&fb,bet,0);
-	  //	  exp_merge(e1=et,e2,&et,fb1=fb,fb2,&fb,b[i],bn[i],bn2[i],0,2*eps);
 	}
 
 	e += et;
@@ -456,7 +401,6 @@ double bond(int iflag) {
 	    db2 = bb - bn2[i];
 	    bond_ecalc(&e2,&fb2,db2,kbond2[i]);
 	    log_sum_merge(e1,e2,&et,fb1,fb2,&fb,bet,0);
-	    // exp_merge(e1=et,e2,&et,fb1=fb,fb2,&fb,bb,bn[i],bn2[i],0,2*eps);
 	  }
 
 	  fprintf(fp,"%i %lf  %lf %lf %lf  %lf %lf %lf\n",i,bb,e1,e2,et,fb1,fb2,fb);
@@ -509,7 +453,6 @@ double bend(int iflag) {
 	if (FF_BEND == 2  && kbend2[j] != 0) {
 	  dth2 = th[j]-thn2[j];
 	  bend_ecalc(&e2,&fben2,dth2,kbend2[j]);
-	  //	  exp_merge(e1=et,e2,&et,fben1=fben,fben2,&fben,th[j],thn[j],thn2[j],0,2*eps);
 	  log_sum_merge(e1=et,e2,&et,fben1=fben,fben2,&fben,bet,0);
 	}
 	
@@ -567,7 +510,6 @@ double bend(int iflag) {
 	  if (FF_BEND == 2  && kbend2[j] != 0) {
 	    dth2 = d - thn2[j];
 	    bend_ecalc(&e2,&fben2,dth2,kbend2[j]);
-	    //	    exp_merge(e1=et,e2,&et,fben1=fben,fben2,&fben,d,thn[j],thn2[j],0,2*eps);
 	    log_sum_merge(e1=et,e2,&et,fben1=fben,fben2,&fben,bet,0);
 	  }
 
@@ -589,15 +531,6 @@ void tors_ecalc(double *e,double *f,double dph,double k1,double k3) {
   (*e) = k1 * (1 - cos(dph)) + k3 * (1 - cos(dph3));
   (*f) = - k1 * sin(dph) - 3 * k3 * sin(dph3); 
 
-  return ;
-}
-/****************************************************************************/
-void tors_ecalc_peg(double *e,double *f,double dph) {
-  double dph2 = 2 * dph;
-  
-  (*e) = kph1_peg * (1 - cos(dph)) + kph2_peg * (1 + cos(dph2));
-  (*f) = - kph1_peg * sin(dph) + 2 * kph2_peg * sin(dph2);
-  
   return ;
 }
 /****************************************************************************/
@@ -629,15 +562,11 @@ double torsion(int iflag) {
 	l = i + 3;
 	dph = ph[j] - phn[j];
 	
-	if (FF_PEG && FF_TORS == 1) {
-	  tors_ecalc_peg(&et,&fph,dph);
-	} 
-
-	if (!FF_PEG && FF_TORS == 1) {
+	if (FF_TORS == 1) {
 	  tors_ecalc(&et,&fph,dph,ktor1[j],ktor3[j]);
 	}
 	
-	if (!FF_PEG && FF_TORS == 2) {
+	if (FF_TORS == 2) {
 	  dph2 = ph[j] - phn2[j];
 	  if (tor[j]) tors_ecalc(&e1,&fph1,dph,ktor1[j],ktor3[j]);
 	  if (tor2[j]) tors_ecalc(&e2,&fph2,dph2,ktor1_2[j],ktor3_2[j]);
@@ -705,21 +634,15 @@ double torsion(int iflag) {
 	for (d = -pi; d < pi; d += pi/360) {
 	  dph = d - phn[j];
 	  
-	  if (FF_PEG && FF_TORS == 1) {
-	    tors_ecalc_peg(&et,&fph,dph);
-	    e1 = et; fph1 = fph;
-	  } 
-	  
-	  if (!FF_PEG && FF_TORS == 1) {
+	  if (FF_TORS == 1) {
 	    tors_ecalc(&et,&fph,dph,ktor1[j],ktor3[j]);
 	    e1 = et; fph1 = fph;
 	  }
 	  
-	  if (!FF_PEG && FF_TORS == 2) {
+	  if (FF_TORS == 2) {
 	    dph2 = d - phn2[j];
 	    if (tor[j]) tors_ecalc(&e1,&fph1,dph,ktor1[j],ktor3[j]);
 	    if (tor2[j]) tors_ecalc(&e2,&fph2,dph2,ktor1_2[j],ktor3_2[j]);
-	    //	  if (tor[j] && tor2[j]) exp_merge(e1,e2,&et,fph1,fph2,&fph,0,-pi,pi,0,2*eps);
 	    if (tor[j] && tor2[j]) log_sum_merge(e1,e2,&et,fph1,fph2,&fph,bet,0);
 	    else {
 	      et = (tor[j] ? e1 : e2);
@@ -740,10 +663,6 @@ double torsion(int iflag) {
   
   return 0;
 }
-/****************************************************************************/
-//void eseq_calc(int i,int j,double r2,double *es,double *fs) {
-  // energy and force from interaction between i and j
-//}
 /****************************************************************************/
 double exvol(int iflag)
 {
@@ -1254,9 +1173,8 @@ double cont2(int iflag) {
 /****************************************************************************/
 double cont_corr(int iflag) {
   int s,m,n,i,j;
-  double r,r2,rx,ry,rz,sig1,sig2;
-  double e=0,e1,e2,et,d,er,fr,fr1,fr2;
-  double k_shared;
+  double r,r2,rx,ry,rz;
+  double e=0,er,fr;
   static double rcut_mb;
   FILE *fp1;
 
@@ -1270,23 +1188,13 @@ double cont_corr(int iflag) {
   double rg1xB,rg1yB,rg1zB,eg1B,fg1B;
   double rg2xB,rg2yB,rg2zB,eg2B,fg2B;
 
+  if (!FF_MULTIBODY) {
+    printf("    cont_corr() not implemented for the case FF_MULTIBODY %i\nExiting...\n",FF_MULTIBODY);
+    exit(-1);
+  }
+
   if (iflag < 0) {
     rcut_mb = 3 * ksi1;
-    if (!FF_MULTIBODY) {
-      fp1 = fopen("results/param_check/cont_param_shared.out","w");
-      for (s = 0; s < spair; ++s) {
-	m = mc1[s];
-	n = mc2[s];
-	
-	if ((k_shared = sqrt(kcon_nat1[m] * kcon_nat2[n])) == 0) continue;
-	
-	i = ip1[m];
-	j = ip2[m];
-	
-	fprintf(fp1,"%i %i %lf %lf %lf\n",i,j,k_shared,distp[m],distp3[n]);
-      }
-      fclose(fp1);
-    }
 
     if (FF_MULTIBODY) {
       fp1 = fopen("results/param_check/cont_param_shared.out","w");
@@ -1311,6 +1219,7 @@ double cont_corr(int iflag) {
       }
       fclose(fp1);
     }
+
     return 0;
   }
 
@@ -1323,23 +1232,6 @@ double cont_corr(int iflag) {
       j = ip2[m];
 
       r2 = vec2(i,j,&rx,&ry,&rz);
-
-      if (!FF_MULTIBODY) {
-	if ((k_shared = sqrt(kcon_nat1[m] * kcon_nat2[n])) == 0) continue;
-
-	if (r2 < 4 * (sig1 = distp2[m])) 
-	  cont_ecalc(0,&e1,&fr1,sig1,k_shared,r2);
-	else  e1 = fr1 = 0;      
-	
-	if (r2 < 4 * (sig2 = distp4[n])) 
-	  cont_ecalc(0,&e2,&fr2,sig2,k_shared,r2);
-	else  e2 = fr2 = 0;
-	
-	exp_merge(e1,e2,&et,fr1,fr2,&fr,r2,sig1,sig2,-k_shared,eps);
-	
-	e += et;
-	add_f(i,j,-fr,rx,ry,rz);
-      }
 
       if (FF_MULTIBODY) {
 	if ( (r=sqrt(r2)) > distp[m] + rcut_mb  && r > distp3[n] + rcut_mb ) continue;
@@ -1381,46 +1273,6 @@ double cont_corr(int iflag) {
   }
   
   if (iflag > 0) {
-    fp1 = fopen("results/param_check/cont_energy_shared.plot","w");
-
-    for (s = 0; s < spair; ++s) {
-      m = mc1[s];
-      n = mc2[s];
-
-      if ((k_shared = sqrt(kcon_nat1[m] * kcon_nat2[n])) == 0) continue;
-
-      i = ip1[m];
-      j = ip2[m];
-
-      for (d = 3.0; d < 20; d += 0.01) {
-	r2 = d * d;
-
-	e1 = fr1 = 0;
-	k_shared = sqrt(kcon_nat1[m] * kcon_nat2[n]);
-
-	if (r2 < 4 * (sig1 = distp2[m])) 
-	  cont_ecalc(0,&e1,&fr1,sig1,k_shared,r2);
-	
-	e2 = fr2 = 0;
-	if (r2 < 4 * (sig2 = distp4[n])) 
-	  cont_ecalc(0,&e2,&fr2,sig2,k_shared,r2);
-
-	if (sig1 < sig2) {
-	  et = e1;
-	  fr = fr1;
-	} else {
-	  et = e2;
-	  fr = fr2;
-	}
-
-	exp_merge(e1,e2,&et,fr1,fr2,&fr,r2,sig1,sig2,-k_shared,eps);
-	
-	fprintf(fp1,"%i %i %i %lf  %lf %lf %lf   %lf %lf %lf \n",s,i,j,d,
-		e1,e2,et,fr1*d,fr2*d,fr*d);
-      }
-    }
-    
-    fclose(fp1);
     
     return 0;
   }

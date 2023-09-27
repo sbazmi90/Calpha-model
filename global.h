@@ -50,8 +50,6 @@ extern double sighp;
 extern double cuthp;
 extern double ksi1,ksi2;
 extern double kcon60,krep12,kbon2,kth2;
-extern double bn_peg,th_peg,ph_peg;
-extern double kbon_peg,kth_peg,kph1_peg,kph2_peg;
 /************* native structure *********************************************/
 extern double xnat[],ynat[],znat[];
 extern double xnat2[],ynat2[],znat2[];

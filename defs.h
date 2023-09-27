@@ -24,7 +24,6 @@
 # define FF_CONT 2                 /* cont() -- 1 on, 2 dual, 0 off         */
 # define FF_EXVOL 1                /* exvol()-- 1 on, 0 off                 */
 # define FF_SEQ 0                  /* hp()   -- 1 on, 0 off                 */
-# define FF_PEG 0                  /* polyethelene glycol model: 1 on, 0 off*/
 # define FF_MULTIBODY 1            /* cont() -- multibody effects           */ 
 /************* measurements *************************************************/
 # define NBIN 200                  /* # bins                                */

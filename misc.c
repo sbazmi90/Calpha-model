@@ -31,17 +31,8 @@ void printinfo(void) {
   printf("  NTMP %i TMIN %lf TMAX %lf \n",NTMP, TMIN, TMAX);
   printf("  BOX %i \n",BOX);
   printf("Force field:\n");
-  if (FF_PEG)
-    printf("  *** Polyethelene glycol model *** \n");
-  printf("  FF_BOND %i FF_BEND %i FF_TORS %i\n",FF_BOND,FF_BEND,FF_TORS);
-  printf("  FF_CONT %i FF_SEQ %i \n",FF_CONT,FF_SEQ);
-  printf("Interaction parameters chains:\n");
-  if (FF_PEG)
-    printf("  kbon_peg %f kth_peg %f kph1_peg %f kph2_peg %f \n",
-	   kbon_peg,kth_peg,kph1_peg,kph2_peg);
-  else
-    printf("  kbon %f kth %f kph1 %f kph3 %f \n",
-	   kbon,kth,kph1,kph3);
+  printf("  kbon %f kth %f kph1 %f kph3 %f \n",
+	 kbon,kth,kph1,kph3);
   printf("  krep %f kcon %f khp %f \n",krep,kcon,khp);
   printf("  eps %f sigsa %f \n",eps,sigsa);
   if (NCR > 0){
@@ -1070,18 +1061,6 @@ void init(int iflag) {
   
   if (nnat1 > 0) get_bonded_param(bn,thn,phn,xnat,ynat,znat,nat,tor,"_nat.out");
   if (nnat2 > 0) get_bonded_param(bn2,thn2,phn2,xnat2,ynat2,znat2,nat2,tor2,"_nat2.out");
-
-  /* reference values for polyethelene glycol  */
-  
-  if (FF_PEG) {
-    for (i = 0; i < N-1; i++) bn[i]  =  bn_peg;
-    for (i = 1; i < N-1; i++) thn[i] =  th_peg * pi / 180.;
-    for (i = 1; i < N-2; i++) phn[i] =  ph_peg;
-    printf("<get_bonded_param> PEG references values for bonded terms:\n");
-    printf("<get_bonded_param> bn_peg %lf \n",bn_peg);
-    printf("<get_bonded_param> th_peg %lf \n",th_peg);
-    printf("<get_bonded_param> ph_peg %lf \n",ph_peg);
-  }
 
   /* default strengths */
   

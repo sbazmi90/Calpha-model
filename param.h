@@ -16,15 +16,6 @@ double sighp=5.0;                  /* sequence-based energy                 */
 double cuthp=4.5;                  /* cutoff                                */
 double ksi1=1.0;                   /* contact */
 double ksi2=25.0;                  /* contact */
-//double ksi2=1e6;/* contact */
-/* Polyethelene glycol (access with FF_PEG) */
-double kbon_peg=35.0;              /* bond energy                           */
-double kth_peg=10.0;               /* bend energy                           */
-double kph1_peg=0.85;              /* torsion energy                        */
-double kph2_peg=0.27;              /* torsion energy                        */
-double bn_peg=3.3;                 /* bond length    */
-double th_peg=130;                 /* bend angle     */
-double ph_peg=0;                   /* torsion angle  */
 /* Crowders: */
 const double rcrowd = 12.0;        /* Crowder radius                        */
 const double srefcr = 3.0;         /* Crowder repulsion softness (sigma)    */
