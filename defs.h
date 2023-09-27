@@ -7,8 +7,8 @@
 # define ISEED 1                   /* 1 randomize seed (/dev/urandom)       */
 # define IFIX 0                    /* 1,0                                  */
 /************* MD parameters ************************************************/
-# define MDSTEP (2000000000)       /* max # md steps                        */
-# define NTHERM (100000)           /* # discarded steps                     */
+# define MDSTEP (200000)       /* max # md steps                        */
+# define NTHERM (1000)           /* # discarded steps                     */
 # define IFLIP (100)               /* temperature flips                     */
 # define ISAMP (100)               /* sample                                */
 # define ICHECK (100000)           /* checkpoint                            */
