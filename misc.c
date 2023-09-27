@@ -967,12 +967,13 @@ void init(int iflag) {
 
   /* Packing fractions */
 
-  double phi_cr = NCR * (4./3) * pi * pow(rcrowd,3.0) / pow(BOX,3.0);
-  double phi_bd =   N * (4./3) * pi * pow(sigsa,3) / pow(BOX,3.0);
-  printf("<init> Volume fraction occupied\n");
-  printf("  Crowders: %lf Chains: %lf Total: %lf \n",
-	 phi_cr,phi_bd,phi_cr+phi_bd);
-
+  if (NCR > 0) {
+    double rcrowd_effective = rcrowd + 0.5;
+    double phi_cr = NCR * (4./3) * pi * pow(rcrowd_effective,3.0) / pow(BOX,3.0);
+    printf("<init> Volume fraction occupied\n");
+    printf("  Crowders: %lf \n",phi_cr);
+  }
+  
   if (iflag == 0) return ;
 
   /* native structures */
