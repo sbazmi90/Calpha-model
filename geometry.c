@@ -135,9 +135,6 @@ void dof2cart(int iflag) {
       x[k] = BOX * ran3n(&seed);
       y[k] = BOX * ran3n(&seed);
       z[k] = BOX * ran3n(&seed);
-      //      x[k] = boxhf;
-      //      y[k] = boxhf;
-      //      z[k] = boxhf;
       //      printf("%d %lf %lf %lf\n",k,x[k],y[k],z[k]);
       
       x[k+1] = x[k];

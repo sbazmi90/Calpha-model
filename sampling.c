@@ -11,7 +11,7 @@
 long imd,imd0;                     /* number of time steps                  */
 const double tau=4.0;              /* time scale sqrt(m*l*l/eps0)           */
 double dt;                         /* time step                             */
-/* Chain beads: */ 
+/* Protein: */ 
 double vx[N],vy[N],vz[N];          /* velocities                            */
 double gam;                        /* friction coefficient                  */
 double mbd;                        /* mass                                  */

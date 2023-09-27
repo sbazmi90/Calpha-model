@@ -117,17 +117,6 @@ void averages(double so[][NOBS]) {
   fclose(fp);
 } 
 /****************************************************************************/
-/*void heat_capacity(char *fn,double e,double e2,int n) {
-  FILE *fp;
-  
-  e=e/n;
-  e2=e2/n;
-  
-  fp=fopen(fn,"w");
-  fprintf(fp,"%lf %.5f\n",T,(e2-e*e)/T/T);
-  fclose(fp);
-  } */
-/****************************************************************************/
 void update_g(double so[][NOBS],double g[]) {
   int i;
   double g2[NTMP],ntot = 0;
@@ -420,9 +409,6 @@ void check_cmaps(void) {
       printf("<check_cmaps1> %s contact %i %i (%lf > %lf). Setting repulsive distance to %lf\n",
 	     dual1[m] > 0 ? "Dual" : "Native",
 	     i,j,distp[m],sqrt(r2),sqrt(dist_rep1[m]));
-      /*      printf("<check_cmaps>    Suggest adding %i %i as native contact in %s \n",i,j,
-	     CONTMAP2);
-	     clash = 1; */
     }
   }
 
@@ -436,9 +422,6 @@ void check_cmaps(void) {
       printf("<check_cmaps2> %s contact %i %i (%lf > %lf). Setting repulsive distance to %lf\n",
 	     dual2[n] > 0 ? "Dual" : "Native",
 	     i,j,distp3[n],sqrt(r2),sqrt(dist_rep2[n]));
-      /*      printf("<check_cmaps>    Suggest adding %i %i as native contact in %s \n",i,j,
-	     CONTMAP);
-	     clash = 1; */
     }
   }
 

@@ -825,21 +825,13 @@ double cellcalc(int inc,int nl,short list[])
       r6=sigsa2/r2; r6=r6*r6*r6; r12=r6*r6;
       e+=r12+asa+bsa*r2;
       fr=krep12*r12/r2-bsa2;
-      //      eseq_calc(i,j,r2,&es,&fs);  
-      //      (*eseq) += es;
-      //      (*fseq) += fs;
+
       fx[i]-=fr*rx;
       fy[i]-=fr*ry;
       fz[i]-=fr*rz;
       fx[j]+=fr*rx;
       fy[j]+=fr*ry;
       fz[j]+=fr*rz;
-      //      fx[i]-=fs*rx;
-      //      fy[i]-=fs*ry;
-      //      fz[i]-=fs*rz;
-      //      fx[j]+=fs*rx;
-      //      fy[j]+=fs*ry;
-      //      fz[j]+=fs*rz;
     }
   }
 
@@ -1285,6 +1277,8 @@ double hp(int iflag) {
   double r,r2,rx,ry,rz,dr,fr,edr,e=0;
   static double  aco,bco,cq2;
 
+  // untested
+  
   if (FF_SEQ == 0) return 0;
 
   if (iflag < 0) {
