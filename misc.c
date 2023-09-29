@@ -31,6 +31,8 @@ void printinfo(void) {
   printf("  NTMP %i TMIN %lf TMAX %lf \n",NTMP, TMIN, TMAX);
   printf("  BOX %i \n",BOX);
   printf("Force field:\n");
+  printf("  FF_BOND %i FF_BEND %i FF_TORS %i\n",FF_BOND,FF_BEND,FF_TORS);
+  printf("  FF_CONT %i FF_SEQ %i \n",FF_CONT,FF_SEQ);
   printf("  kbon %f kth %f kph1 %f kph3 %f \n",
 	 kbon,kth,kph1,kph3);
   printf("  krep %f kcon %f khp %f \n",krep,kcon,khp);

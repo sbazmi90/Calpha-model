@@ -86,7 +86,9 @@ int main (int argc,char *argv[])
       o[15] = (nn2 = no_cont2()) / max(npair2,1);
       o[16] = (nn1 > qcut_a ? 1 : 0);
       o[17] = (nn2 > qcut_b ? 1 : 0);
-      
+
+      //      printf("imd %li %lf\n",imd,Epot);
+
       if ((imd+1) > NTHERM) {
 	so[ind][0]++; for (i = 0 ; i < NOBS; i++) so[ind][i] += o[i];
 	po[run][ind][0]++; for (i = 1; i < NOBS; i++) po[run][ind][i] += o[i];
@@ -99,7 +101,7 @@ int main (int argc,char *argv[])
 	histo_cont2(0,ind,nn2);
       }
       
-      runtime(imd-1,o);
+      //      runtime(imd-1,o);
     }
 
   }
