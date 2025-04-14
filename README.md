@@ -15,7 +15,7 @@ S Bazmi, B Seifi, S Wallin
 Communications Chemistry 6, 191 (2023)
 [Read on Nature](https://www.nature.com/articles/s42004-023-00995-2)
 
-This study uses the Calpha model to explore how macromolecular crowding impacts protein fold switching, revealing the role of intrinsically disordered regions in driving population shifts between conformational states.
+This study uses the C<sub>α</sub> model to explore how macromolecular crowding impacts protein fold switching, revealing the role of intrinsically disordered regions in driving population shifts between conformational states.
 
 
 Conformational entropic barriers in topology-dependent protein folding: perspectives from a simple native-centric polymer model
