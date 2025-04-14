@@ -28,7 +28,9 @@ This foundational paper outlines the theoretical framework behind structure-base
 
 A minimal sequence of commands to compile the code and run a
 simulation of a single chain at a fixed temperature is:
+## Simulations and Molecular Dynamics
 
+## Results
 make constants
 
 ./constants input 1
