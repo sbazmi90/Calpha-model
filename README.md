@@ -1,8 +1,10 @@
-# Calpha-model
+# Calpha-model: Coarse-Grained Protein Folding and Fold Switching Simulations
 
 This C code implements a one bead-per-amino acid coarse-grained
-model for protein folding, with a structure-based potential.
+model for protein folding and protein fold switching, with a structure-based potential.
 Conformational sampling is carried out using Langevin dynamics.
+
+This repository developed in the [Wallin Lab](https://www.physics.mun.ca/~jswallin/index.html) under the supervision of **Dr. Stefan Wallin**, this model allows researchers to study **protein folding, fold switching, and particularly macromolecular crowding effects** on proteins.
 
 For a detailed description of the model and sampling method,
 see:
