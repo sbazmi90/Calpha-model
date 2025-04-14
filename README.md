@@ -8,7 +8,7 @@ This repository developed in the [Wallin Lab](https://www.physics.mun.ca/~jswall
 
 ## How to cite
 
-If you use the Calpha model or build upon it in your own work, please cite the following publications:
+If you use the C<sub>α</sub> model or build upon it in your own work, please cite the following publications:
 
 Simulations of a protein fold switch reveal crowding-induced population shifts driven by disordered regions
 S Bazmi, B Seifi, S Wallin
