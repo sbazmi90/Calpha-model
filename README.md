@@ -1,4 +1,4 @@
-# C<sub>[α] model: Coarse-Grained Protein Folding and Fold Switching Simulations
+# C<sub>α<sub> model: Coarse-Grained Protein Folding and Fold Switching Simulations
 
 This C code implements a one bead-per-amino acid coarse-grained
 model for protein folding and protein fold switching, with a structure-based potential.
