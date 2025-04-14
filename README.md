@@ -10,7 +10,7 @@ This repository developed in the [Wallin Lab](https://www.physics.mun.ca/~jswall
 
 If you use the C<sub>α</sub> model or build upon it in your own work, please cite the following publications:
 
-Simulations of a protein fold switch reveal crowding-induced population shifts driven by disordered regions
+1. Simulations of a protein fold switch reveal crowding-induced population shifts driven by disordered regions
 S Bazmi, B Seifi, S Wallin
 Communications Chemistry 6, 191 (2023)
 [Read on Nature](https://www.nature.com/articles/s42004-023-00995-2)
@@ -18,7 +18,7 @@ Communications Chemistry 6, 191 (2023)
 This study uses the C<sub>α</sub> model to explore how macromolecular crowding impacts protein fold switching, revealing the role of intrinsically disordered regions in driving population shifts between conformational states.
 
 
-Conformational entropic barriers in topology-dependent protein folding: perspectives from a simple native-centric polymer model
+2. Conformational entropic barriers in topology-dependent protein folding: perspectives from a simple native-centric polymer model
 S Wallin, H.S. Chan
 Journal of Physics: Condensed Matter 18, S307–S328 (2006)
 [Link to paper](https://iopscience.iop.org/article/10.1088/0953-8984/21/32/329801/pdf)
