@@ -21,7 +21,7 @@ This study uses the C<sub>α</sub> model to explore how macromolecular crowding 
 Conformational entropic barriers in topology-dependent protein folding: perspectives from a simple native-centric polymer model
 S Wallin, H.S. Chan
 Journal of Physics: Condensed Matter 18, S307–S328 (2006)
-[Link to paper](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://iopscience.iop.org/article/10.1088/0953-8984/21/32/329801/pdf)
+[Link to paper](https://iopscience.iop.org/article/10.1088/0953-8984/21/32/329801/pdf)
 
 This foundational paper outlines the theoretical framework behind structure-based coarse-grained protein models and insights into entropic barriers and folding pathways using native-centric approaches.
 
