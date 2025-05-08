@@ -85,8 +85,7 @@ make fixtemp (simtemp)
 🎯 Communications Chemistry 6, 191 (2023)
 
 ![Figure 1](figures/a-1.png) 
-![Figure 2](figures/a-2.png) 
-<img src="figures/a-2.png" width="500"/> 
+<img src="figures/a-2.png" width="200"/> 
 
 
 
