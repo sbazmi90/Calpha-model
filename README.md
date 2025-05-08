@@ -80,10 +80,15 @@ make fixtemp (simtemp)
 
 ./main
 
-
-
-
 ## Results
+
+🎯 Communications Chemistry 6, 191 (2023)
+
+![Figure 1](figures/a-1.png) 
+![Figure 2](figures/a-2.png) 
+
+
+
 
 
 Contact: Stefan Wallin, swallin@mun.ca
