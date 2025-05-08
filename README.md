@@ -69,23 +69,22 @@ Main simulation driver for fixed-temperature molecular dynamics. It runs Langevi
 
 Simulation driver for simulated tempering protocol. It includes temperature flipping based on Metropolis-Hastings algorithm and adaptive weight updates (update_g). Enables exploration of conformational space by dynamically switching temperatures (Marinari and Parisi, 1992)[Link to paper](https://iopscience.iop.org/article/10.1088/0953-8984/21/32/329801/pdf). 
 
+📌 A minimal sequence of commands to compile the code and run a
+simulation of a single chain at a fixed (and several) temperature is:
 
-
-
-A minimal sequence of commands to compile the code and run a
-simulation of a single chain at a fixed temperature is:
-## Simulations and Molecular Dynamics
-
-
-
-## Results
 make constants
 
 ./constants input 1
 
-make fixtemp
+make fixtemp (simtemp)
 
 ./main
+
+
+
+
+## Results
+
 
 Contact: Stefan Wallin, swallin@mun.ca
 
