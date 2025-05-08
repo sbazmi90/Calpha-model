@@ -85,8 +85,10 @@ make fixtemp (simtemp)
 🎯 Communications Chemistry 6, 191 (2023)
 
 ![Figure 1](figures/a-1.png) 
-Simulating the GA/GB fold-switch system. a Representative experimental structures of the GA and GB folds shown in ribbon: GA95 (PDB id 2KDL; blue) and GB95 (PDB id 2KDM; orange). In GA95, residue positions 1-7 and 53-56 are intrinsically disordered (purple). b Contact maps of the GA95 (above
-diagonal) and GB95 (below diagonal) structures. c Population P of the GA (triangles) and GB (circles) folds as functions of the GB contacts strength, κB.
+### Simulating the GA/GB fold-switch system:
+
+ A representative experimental structures of the G<sub>A</sub> and G<sub>B</sub> folds shown in ribbon: G<sub>αA95</sub> (PDB id 2KDL; blue) and G<sub>B95</sub> (PDB id 2KDM; orange), and contact maps. Population P of the G<sub>A</sub> (triangles) and G<sub>B</sub>(circles) folds as functions of the G<sub>B</sub> contacts strength, κ<sub>αB</sub>.
+
 <img src="figures/a-2.png" width="200"/> 
 
 
