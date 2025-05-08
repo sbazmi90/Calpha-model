@@ -67,7 +67,7 @@ Main simulation driver for fixed-temperature molecular dynamics. It runs Langevi
 
 🔧 main_simtemp.c
 
-Simulation driver for simulated tempering protocol. It includes temperature flipping based on Metropolis-Hastings algorithm and adaptive weight updates (update_g). Enables exploration of conformational space by dynamically switching temperatures ([Marinari and Parisi])(https://iopscience.iop.org/article/10.1088/0953-8984/21/32/329801/pdf). 
+Simulation driver for simulated tempering protocol. It includes temperature flipping based on Metropolis-Hastings algorithm and adaptive weight updates (update_g). Enables exploration of conformational space by dynamically switching temperatures (Marinari and Parisi, 1992)[Link to paper](https://iopscience.iop.org/article/10.1088/0953-8984/21/32/329801/pdf). 
 
 
 
