@@ -97,7 +97,7 @@ Crowding causes a shift in fold populations favoring G<sub>B</sub> over G<sub>A<
 
 
 🎯 J. Phys.: Condens. Matter (2006)
-![Figure 2](figures/b-1.png) 
+<img src="figures/b-1.png" width="220"/> 
 Simulated folding rates show strong correlation with experimental data, validating the topology–rate relationship using a native-centric polymer model.
 
 
