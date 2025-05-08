@@ -84,12 +84,17 @@ make fixtemp (simtemp)
 
 🎯 Communications Chemistry 6, 191 (2023)
 
-![Figure 1](figures/a-1.png) 
 ### Simulating the GA/GB fold-switch system:
+![Figure 1](figures/a-1.png) 
+
 
  A representative experimental structures of the G<sub>A</sub> and G<sub>B</sub> folds shown in ribbon: G<sub>A95</sub> (PDB id 2KDL; blue) and G<sub>B95</sub> (PDB id 2KDM; orange), and contact maps. Population P of the G<sub>A</sub> (triangles) and G<sub>B</sub>(circles) folds as functions of the G<sub>B</sub> contacts strength, κ<sub>B</sub>.
 
-<img src="figures/a-2.png" width="200"/> 
+### Population shift:
+<img src="figures/a-2.png" width="220"/> 
+
+Crowding causes a shift in fold populations favoring G<sub>B</sub> over G<sub>A</sub>. 
+
 
 
 
