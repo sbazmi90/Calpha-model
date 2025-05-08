@@ -100,7 +100,7 @@ Crowding causes a shift in fold populations favoring G<sub>B</sub> over G<sub>A<
 
 
 <img src="figures/b-1.png" width="260"/> 
-Simulated folding rates show strong correlation with experimental data, validating the topology–rate relationship using a native-centric polymer model.
+Simulated folding rates show strong correlation with experimental data, validating the relationship using a native-centric polymer model.
 
 
 -----------------------------------------------------------
