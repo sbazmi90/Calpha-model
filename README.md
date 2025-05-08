@@ -96,8 +96,9 @@ make fixtemp (simtemp)
 Crowding causes a shift in fold populations favoring G<sub>B</sub> over G<sub>A</sub>. 
 
 
-
-
+🎯 J. Phys.: Condens. Matter (2006)
+![Figure 2](figures/b-1.png) 
+Simulated folding rates show strong correlation with experimental data, validating the topology–rate relationship using a native-centric polymer model.
 
 
 Contact: Stefan Wallin, swallin@mun.ca
