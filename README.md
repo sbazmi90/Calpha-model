@@ -86,6 +86,7 @@ make fixtemp (simtemp)
 
 ![Figure 1](figures/a-1.png) 
 ![Figure 2](figures/a-2.png) 
+<img src="figures/a-2.png" width="500"/> 
 
 
 
